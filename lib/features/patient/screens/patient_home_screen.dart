@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:memory_assist/features/guardian/services/reminder_service.dart';
 import 'package:intl/intl.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:memory_assist/features/patient/screens/safe_locations_screen.dart';
 import 'package:memory_assist/features/auth/services/link_service.dart';
 
@@ -21,6 +22,8 @@ class _PatientHomeScreenState extends ConsumerState<PatientHomeScreen> {
   late Timer _timer;
   String? _userId;
 
+  StreamSubscription<Position>? _positionStream;
+
   @override
   void initState() {
     _timeString = _formatTime(DateTime.now());
@@ -28,11 +31,52 @@ class _PatientHomeScreenState extends ConsumerState<PatientHomeScreen> {
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => _getTime());
     _userId = FirebaseAuth.instance.currentUser?.uid;
     super.initState();
+    _startLocationTracking();
+  }
+
+  Future<void> _startLocationTracking() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+
+    // Test if location services are enabled.
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return;
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return;
+      }
+    }
+    
+    if (permission == LocationPermission.deniedForever) {
+      return;
+    }
+
+    // Start Stream
+    const LocationSettings locationSettings = LocationSettings(
+      accuracy: LocationAccuracy.high,
+      distanceFilter: 10,
+    );
+
+    _positionStream = Geolocator.getPositionStream(locationSettings: locationSettings).listen(
+      (Position? position) {
+        if (position != null && _userId != null) {
+          FirebaseFirestore.instance.collection('users').doc(_userId).update({
+            'current_location': GeoPoint(position.latitude, position.longitude),
+            'last_updated': FieldValue.serverTimestamp(),
+          });
+        }
+      });
   }
 
   @override
   void dispose() {
     _timer.cancel();
+    _positionStream?.cancel();
     super.dispose();
   }
 

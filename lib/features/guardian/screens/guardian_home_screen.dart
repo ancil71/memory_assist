@@ -5,6 +5,7 @@ import 'package:memory_assist/features/guardian/screens/add_reminder_screen.dart
 import 'package:memory_assist/features/guardian/screens/manage_faces_screen.dart';
 import 'package:memory_assist/features/guardian/screens/add_safe_location_screen.dart';
 import 'package:memory_assist/features/guardian/screens/sos_monitor_screen.dart';
+import 'package:memory_assist/features/guardian/screens/live_tracking_screen.dart';
 import 'package:clipboard/clipboard.dart'; // Add this dependency manually or use raw flutter clipboard
 
 class GuardianHomeScreen extends StatefulWidget {
@@ -177,6 +178,18 @@ class _GuardianHomeScreenState extends State<GuardianHomeScreen> {
                   color: Colors.red.shade100,
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (_) => const SOSMonitorScreen()));
+                  },
+                ),
+                _DashboardCard(
+                  icon: Icons.location_searching, 
+                  title: 'Live Tracking',
+                  color: Colors.blue.shade100,
+                  onTap: () {
+                    if (_selectedPatientId != null) {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => LiveTrackingScreen(patientId: _selectedPatientId!)));
+                    } else {
+                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Select a patient first')));
+                    }
                   },
                 ),
               ],
