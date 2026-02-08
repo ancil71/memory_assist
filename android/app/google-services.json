@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "119074168485",
+    "project_id": "memory-assist-c1dfd",
+    "storage_bucket": "memory-assist-c1dfd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:119074168485:android:916af9ad0a721b7882b74c",
+        "android_client_info": {
+          "package_name": "com.example.memory_assist"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqVS-teCIxzG4CxfMo_FkvzpY57kSa_t0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

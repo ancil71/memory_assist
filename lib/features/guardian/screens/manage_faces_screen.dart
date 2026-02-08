@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -22,7 +23,11 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
 
   Future<void> _addFace() async {
     // 1. Pick Image
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    final pickedFile = await _picker.pickImage(
+      source: ImageSource.gallery,
+      imageQuality: 50, // Compress to avoid Firestore 1MB limit
+      maxWidth: 600,
+    );
     
     if (pickedFile == null) return;
     if (!mounted) return;
@@ -57,9 +62,9 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context); // Close dialog verify inputs later
-                _uploadFace(File(pickedFile.path));
+                _saveFace(File(pickedFile.path));
               },
-              child: const Text('Upload'),
+              child: const Text('Save'),
             ),
           ],
         );
@@ -67,7 +72,7 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
     );
   }
 
-  Future<void> _uploadFace(File imageFile) async {
+  Future<void> _saveFace(File imageFile) async {
     if (_nameController.text.isEmpty) return;
 
     setState(() => _isUploading = true);
@@ -84,11 +89,11 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
       );
 
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Face Uploaded Successfully!')));
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Face Saved Successfully!')));
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Upload Failed: $e')));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Failed: $e')));
       }
     } finally {
       if (mounted) setState(() => _isUploading = false);
@@ -132,7 +137,7 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
             itemCount: faces.length,
             itemBuilder: (context, index) {
               final data = faces[index].data() as Map<String, dynamic>;
-              final imageUrl = data['image_url'] as String?;
+              final base64Image = data['image_base64'] as String?;
               final name = data['name'] ?? 'Unknown';
               final relation = data['relationship'] ?? '';
 
@@ -140,16 +145,13 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
                 clipBehavior: Clip.antiAlias,
                 child: Stack(
                   children: [
-                    if (imageUrl != null)
-                      Image.network(
-                        imageUrl,
+                    if (base64Image != null)
+                      Image.memory(
+                        base64Decode(base64Image),
                         fit: BoxFit.cover,
                         width: double.infinity,
                         height: double.infinity,
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress == null) return child;
-                          return const Center(child: CircularProgressIndicator());
-                        },
+                        errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image),
                       )
                     else
                       const Center(child: Icon(Icons.person, size: 50)),
@@ -190,7 +192,7 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
                            );
                            
                            if (confirm == true) {
-                             await faceService.deleteFace(faces[index].id, imageUrl!);
+                             await faceService.deleteFace(faces[index].id); // No URL needed now
                            }
                         },
                       ),
