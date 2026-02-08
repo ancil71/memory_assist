@@ -1,48 +1,101 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:memory_assist/features/auth/services/auth_service.dart';
 import 'package:memory_assist/features/guardian/screens/guardian_home_screen.dart';
 import 'package:memory_assist/features/patient/screens/patient_home_screen.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   final String role; // 'guardian' or 'patient'
   const LoginScreen({super.key, required this.role});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isLoading = false;
+  String? _errorMessage;
 
-  void _handleLogin() async {
-    // TODO: Implement Firebase Auth Logic
-    // For now, mock navigation based on role
+  Future<void> _handleLogin() async {
+    setState(() {
+      _isLoading = true;
+      _errorMessage = null;
+    });
+
+    try {
+      final authService = ref.read(authServiceProvider);
+      
+      // 1. Sign In
+      await authService.signIn(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+      );
+
+      // 2. Check Role (Optional: Validate if role matches selection)
+      // For simplicity in MVP, assume correct credentials map to correct role
+      // Or verify:
+      // final userRole = await authService.getUserRole(user.uid);
+      // if (userRole != widget.role) ...
+
+      if (!mounted) return;
+
+      if (widget.role == 'guardian') {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => const GuardianHomeScreen()),
+          (route) => false,
+        );
+      } else {
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => const PatientHomeScreen()),
+          (route) => false,
+        );
+      }
+    } catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _errorMessage = e.toString();
+      });
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Login Failed: ${e.toString()}')),
+      );
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
+    }
+  }
+
+  Future<void> _handleSignUp() async {
+    // Basic Sign Up for Demo purposes
     setState(() => _isLoading = true);
-    await Future.delayed(const Duration(seconds: 1)); // Mock delay
-    
-    if (!mounted) return;
+    try {
+      final authService = ref.read(authServiceProvider);
+      
+      await authService.signUp(
+        _emailController.text.trim(),
+        _passwordController.text.trim(),
+        widget.role,
+      );
 
-    if (widget.role == 'guardian') {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (_) => const GuardianHomeScreen()),
-        (route) => false,
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Account Created! Logging in...')),
       );
-    } else {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (_) => const PatientHomeScreen()),
-        (route) => false,
-      );
+      _handleLogin(); // Auto login after signup
+
+    } catch (e) {
+      setState(() => _errorMessage = e.toString());
+    } finally {
+      if (mounted) setState(() => _isLoading = false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final isGuardian = widget.role == 'guardian';
-    final theme = Theme.of(context);
-
+    
     return Scaffold(
       appBar: AppBar(
         title: Text(isGuardian ? 'Guardian Login' : 'Patient Login'),
@@ -53,6 +106,11 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             const SizedBox(height: 32),
+            if (_errorMessage != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 16),
+                child: Text(_errorMessage!, style: const TextStyle(color: Colors.red)),
+              ),
             TextField(
               controller: _emailController,
               decoration: const InputDecoration(
@@ -84,18 +142,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 child: _isLoading
                     ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text(
-                        'Login',
-                        style: TextStyle(fontSize: 18),
-                      ),
+                    : const Text('Login', style: TextStyle(fontSize: 18)),
               ),
             ),
-            const Spacer(),
+            const SizedBox(height: 16),
             TextButton(
-              onPressed: () {
-                // TODO: Implement Registration Navigation
-              },
-              child: const Text('Don\'t have an account? Sign Up'),
+              onPressed: _isLoading ? null : _handleSignUp,
+              child: const Text('Create Account instead'),
             ),
           ],
         ),

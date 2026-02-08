@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:memory_assist/features/guardian/services/safe_locations_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-class SafeLocationsScreen extends StatelessWidget {
-  const SafeLocationsScreen({super.key});
+class SafeLocationsScreen extends ConsumerWidget {
+  final String patientId;
+
+  const SafeLocationsScreen({super.key, required this.patientId});
 
   @override
-  Widget build(BuildContext context) {
-    // Accessibility: Large fonts, high contrast
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('MY PLACES', style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black)),
@@ -16,43 +18,34 @@ class SafeLocationsScreen extends StatelessWidget {
         backgroundColor: const Color(0xFFFFCC00), // High contrast Yellow
         foregroundColor: Colors.black,
       ),
-      body: Consumer(
-        builder: (context, ref, child) {
-          final service = ref.watch(safeLocationsServiceProvider);
-          // TODO: Use actual patient ID
-          const patientId = 'patient_uid_mock';
+      body: StreamBuilder<QuerySnapshot>(
+        stream: ref.watch(safeLocationsServiceProvider).getLocations(patientId),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) return const Center(child: Text('Error loading places'));
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
-          return StreamBuilder<QuerySnapshot>(
-            stream: service.getLocations(patientId),
-            builder: (context, snapshot) {
-              if (snapshot.hasError) return const Center(child: Text('Error loading places'));
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: CircularProgressIndicator());
-              }
+          final locations = snapshot.data!.docs;
 
-              final locations = snapshot.data!.docs;
+          if (locations.isEmpty) {
+            return const Center(child: Text('No safe places added yet.', style: TextStyle(fontSize: 24)));
+          }
 
-              if (locations.isEmpty) {
-                return const Center(child: Text('No safe places added yet.', style: TextStyle(fontSize: 24)));
-              }
-
-              return ListView(
-                padding: const EdgeInsets.all(16),
-                children: locations.map((doc) {
-                  final data = doc.data() as Map<String, dynamic>;
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
-                    child: _LocationCard(
-                      label: data['name'] ?? 'Unknown',
-                      icon: Icons.place, 
-                      address: data['address'] ?? '',
-                      // cycle colors or just random
-                      color: Colors.lightBlueAccent,
-                    ),
-                  );
-                }).toList(),
+          return ListView(
+            padding: const EdgeInsets.all(16),
+            children: locations.map((doc) {
+              final data = doc.data() as Map<String, dynamic>;
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 16.0),
+                child: _LocationCard(
+                  label: data['name'] ?? 'Unknown',
+                  icon: Icons.place,
+                  address: data['address'] ?? '',
+                  color: Colors.lightBlueAccent,
+                ),
               );
-            },
+            }).toList(),
           );
         },
       ),
@@ -74,7 +67,6 @@ class _LocationCard extends StatelessWidget {
   });
 
   Future<void> _openMap() async {
-    // TODO: Use actual coordinates from Firestore later
     final Uri googleMapsUrl = Uri.parse('https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(address)}');
     if (await canLaunchUrl(googleMapsUrl)) {
       await launchUrl(googleMapsUrl);

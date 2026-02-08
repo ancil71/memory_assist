@@ -1,14 +1,46 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:memory_assist/features/guardian/screens/add_reminder_screen.dart';
 import 'package:memory_assist/features/guardian/screens/manage_faces_screen.dart';
 import 'package:memory_assist/features/guardian/screens/add_safe_location_screen.dart';
 import 'package:memory_assist/features/guardian/screens/sos_monitor_screen.dart';
+import 'package:clipboard/clipboard.dart'; // Add this dependency manually or use raw flutter clipboard
 
-class GuardianHomeScreen extends StatelessWidget {
+class GuardianHomeScreen extends StatefulWidget {
   const GuardianHomeScreen({super.key});
 
   @override
+  State<GuardianHomeScreen> createState() => _GuardianHomeScreenState();
+}
+
+class _GuardianHomeScreenState extends State<GuardianHomeScreen> {
+  String? _selectedPatientId;
+  String? _linkCode;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchGuardianData();
+  }
+
+  Future<void> _fetchGuardianData() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final doc = await FirebaseFirestore.instance.collection('users').doc(user.uid).get();
+      if (doc.exists) {
+        setState(() {
+          _linkCode = doc.data()?['link_code'] as String?;
+        });
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return const Center(child: Text('Please Login'));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Guardian Dashboard'),
@@ -23,47 +55,77 @@ class GuardianHomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          // 1. Patient Switcher
+          // 1. Patient Switcher & Link Code
           Container(
             padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.teal.shade50,
-              boxShadow: [
-                BoxShadow(color: Colors.grey.withOpacity(0.2), blurRadius: 4, offset: const Offset(0, 2)),
-              ],
-            ),
-            child: Row(
+            color: Colors.teal.shade50,
+            child: Column(
               children: [
-                const CircleAvatar(
-                  backgroundColor: Colors.teal,
-                  child: Icon(Icons.person, color: Colors.white),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Managing Patient:', style: TextStyle(fontSize: 12, color: Colors.grey)),
-                      DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          value: 'Mom',
-                          isDense: true,
-                          items: const [
-                            DropdownMenuItem(value: 'Mom', child: Text('Mom (Alice)', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18))),
-                            DropdownMenuItem(value: 'Dad', child: Text('Dad (Bob)', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18))),
-                          ], 
-                          onChanged: (val) {},
+                if (_linkCode != null)
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(color: Colors.teal.shade200),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('Link Code: $_linkCode', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                        IconButton(
+                          icon: const Icon(Icons.copy, size: 20),
+                          onPressed: () {
+                            // Simple copy logic
+                            // Clipboard.setData(ClipboardData(text: _linkCode!));
+                            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Code Copied!')));
+                          },
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.link),
-                  onPressed: () {
-                    // TODO: Link new patient
+                const SizedBox(height: 16),
+                
+                // Fetch Linked Patients
+                StreamBuilder<DocumentSnapshot>(
+                  stream: FirebaseFirestore.instance.collection('users').doc(user.uid).snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) return const CircularProgressIndicator();
+
+                    final data = snapshot.data!.data() as Map<String, dynamic>?;
+                    final linkedUids = List<String>.from(data?['linked_uids'] ?? []);
+
+                    if (linkedUids.isEmpty) {
+                      return const Text('No patients linked yet. Share your code!');
+                    }
+
+                    // For MVP, just select the first one if not selected
+                    if (_selectedPatientId == null && linkedUids.isNotEmpty) {
+                       // We should ideally fetch their names, but for now use ID or fetch name in a separate Future
+                       _selectedPatientId = linkedUids.first;
+                    }
+
+                    return Row(
+                      children: [
+                        const CircleAvatar(backgroundColor: Colors.teal, child: Icon(Icons.person, color: Colors.white)),
+                        const SizedBox(width: 16),
+                        Expanded(
+                          child: DropdownButton<String>(
+                            value: _selectedPatientId,
+                            isExpanded: true,
+                            hint: const Text('Select Patient'),
+                            items: linkedUids.map((uid) {
+                              return DropdownMenuItem(
+                                value: uid,
+                                child: Text('Patient ID: ...${uid.substring(0,6)}'), 
+                              );
+                            }).toList(),
+                            onChanged: (val) => setState(() => _selectedPatientId = val),
+                          ),
+                        ),
+                      ],
+                    );
                   },
-                  tooltip: 'Link new patient',
                 ),
               ],
             ),
@@ -82,8 +144,11 @@ class GuardianHomeScreen extends StatelessWidget {
                   title: 'Reminders',
                   color: Colors.orange.shade100,
                   onTap: () {
-                    // TODO: Pass actual patient ID
-                    Navigator.push(context, MaterialPageRoute(builder: (_) => const AddReminderScreen(patientId: 'patient_uid_mock')));
+                    if (_selectedPatientId != null) {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => AddReminderScreen(patientId: _selectedPatientId!)));
+                    } else {
+                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Select a patient first')));
+                    }
                   },
                 ),
                 _DashboardCard(
@@ -95,12 +160,15 @@ class GuardianHomeScreen extends StatelessWidget {
                   },
                 ),
                 _DashboardCard(
-                  icon: Icons.map, // or location_on
-                  title: 'Safe Locations', // "guardian can add locations"
+                  icon: Icons.map, 
+                  title: 'Safe Locations',
                   color: Colors.green.shade100,
                   onTap: () {
-                     // TODO: Pass actual patient ID
-                     Navigator.push(context, MaterialPageRoute(builder: (_) => const AddSafeLocationScreen(patientId: 'patient_uid_mock')));
+                     if (_selectedPatientId != null) {
+                        Navigator.push(context, MaterialPageRoute(builder: (_) => AddSafeLocationScreen(patientId: _selectedPatientId!)));
+                     } else {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Select a patient first')));
+                     }
                   },
                 ),
                 _DashboardCard(
@@ -145,10 +213,7 @@ class _DashboardCard extends StatelessWidget {
           children: [
             Icon(icon, size: 48, color: Colors.black54),
             const SizedBox(height: 12),
-            Text(
-              title,
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+            Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           ],
         ),
       ),
