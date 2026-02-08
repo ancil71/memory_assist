@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:memory_assist/features/patient/screens/safe_locations_screen.dart';
 
 class PatientHomeScreen extends StatefulWidget {
   const PatientHomeScreen({super.key});
@@ -147,32 +148,60 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
                   ),
                 ),
                 const SizedBox(width: 16),
-                // SOS Button
+                // Places Button
                 Expanded(
                   child: SizedBox(
                     height: 120,
                     child: ElevatedButton.icon(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFFD32F2F), // Red
+                        backgroundColor: const Color(0xFFFFCC00), // Yellow
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(16),
                         ),
                       ),
                       onPressed: () {
-                         // TODO: Trigger SOS
-                         ScaffoldMessenger.of(context).showSnackBar(
-                           const SnackBar(content: Text('SOS TRIGGERED!')),
+                         Navigator.push(
+                           context,
+                           MaterialPageRoute(builder: (_) => const SafeLocationsScreen()),
                          );
                       },
-                      icon: const Icon(Icons.warning_amber_rounded, size: 48, color: Colors.white),
+                      icon: const Icon(Icons.map, size: 48, color: Colors.black),
                       label: const Text(
-                        'SOS HELP',
-                        style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
+                        'MY PLACES',
+                        style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
                 ),
               ],
+            ),
+          ),
+          // SOS Button (Full Width at Bottom)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: SizedBox(
+              width: double.infinity,
+              height: 100, // Large SOS button
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFFD32F2F), // Red
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                ),
+                onPressed: () {
+                    // TODO: Trigger SOS
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('SOS TRIGGERED!')),
+                    );
+                },
+                icon: const Icon(Icons.warning_amber_rounded, size: 48, color: Colors.white),
+                label: const Text(
+                  'SOS HELP',
+                  style: TextStyle(fontSize: 32, color: Colors.white, fontWeight: FontWeight.bold),
+                ),
+              ),
             ),
           ),
         ],
