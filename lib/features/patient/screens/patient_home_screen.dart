@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:memory_assist/features/guardian/services/reminder_service.dart';
 import 'package:intl/intl.dart';
 import 'package:memory_assist/features/patient/screens/safe_locations_screen.dart';
 
@@ -95,24 +98,55 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
           
           const Divider(height: 2, thickness: 2, color: Colors.black),
 
-          // 2. My Tasks (Simple List)
+          // 2. My Tasks (Realtime Stream)
           Expanded(
-            child: ListView(
-              padding: const EdgeInsets.all(16),
-              children: [
-                const Text(
-                  'MY TASKS',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline,
-                  ),
-                ),
-                const SizedBox(height: 16),
-                _TaskItem(label: 'Take morning medicine', isCompleted: true),
-                _TaskItem(label: 'Drink water', isCompleted: false),
-                _TaskItem(label: 'Call daughter', isCompleted: false),
-              ],
+            child: Consumer(
+              builder: (context, ref, child) {
+                final reminderService = ref.watch(reminderServiceProvider);
+                // TODO: Use actual logged in patient ID
+                const patientId = 'patient_uid_mock'; 
+
+                return StreamBuilder<QuerySnapshot>(
+                  stream: reminderService.getReminders(patientId),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) return const Text('Something went wrong');
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    final reminders = snapshot.data!.docs;
+
+                    return ListView(
+                      padding: const EdgeInsets.all(16),
+                      children: [
+                        const Text(
+                          'MY TASKS',
+                          style: TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        if (reminders.isEmpty)
+                          const Text('No tasks for today!', style: TextStyle(fontSize: 20)),
+                        
+                        ...reminders.map((doc) {
+                          final data = doc.data() as Map<String, dynamic>;
+                          return _TaskItem(
+                            id: doc.id,
+                            label: data['title'] ?? 'Unknown Task',
+                            isCompleted: data['is_completed'] ?? false,
+                            onToggle: (val) {
+                               reminderService.toggleCompletion(doc.id, val);
+                            },
+                          );
+                        }).toList(),
+                      ],
+                    );
+                  },
+                );
+              },
             ),
           ),
 
@@ -210,35 +244,24 @@ class _PatientHomeScreenState extends State<PatientHomeScreen> {
   }
 }
 
-class _TaskItem extends StatefulWidget {
+class _TaskItem extends StatelessWidget {
+  final String id;
   final String label;
   final bool isCompleted;
+  final Function(bool) onToggle;
 
-  const _TaskItem({required this.label, required this.isCompleted});
-
-  @override
-  State<_TaskItem> createState() => _TaskItemState();
-}
-
-class _TaskItemState extends State<_TaskItem> {
-  late bool _isChecked;
-
-  @override
-  void initState() {
-    super.initState();
-    _isChecked = widget.isCompleted;
-  }
+  const _TaskItem({required this.id, required this.label, required this.isCompleted, required this.onToggle});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: InkWell(
-        onTap: () => setState(() => _isChecked = !_isChecked),
+        onTap: () => onToggle(!isCompleted),
         child: Container(
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: _isChecked ? Colors.green.shade100 : Colors.grey.shade100,
+            color: isCompleted ? Colors.green.shade100 : Colors.grey.shade100,
             border: Border.all(color: Colors.black, width: 2),
             borderRadius: BorderRadius.circular(12),
           ),
@@ -247,19 +270,19 @@ class _TaskItemState extends State<_TaskItem> {
               Transform.scale(
                 scale: 2.0,
                 child: Checkbox(
-                  value: _isChecked,
+                  value: isCompleted,
                   activeColor: Colors.green,
-                  onChanged: (v) => setState(() => _isChecked = v!),
+                  onChanged: (v) => onToggle(v!),
                 ),
               ),
               const SizedBox(width: 16),
               Expanded(
                 child: Text(
-                  widget.label,
+                  label,
                   style: TextStyle(
                     fontSize: 24, // Large text
                     fontWeight: FontWeight.w600,
-                    decoration: _isChecked ? TextDecoration.lineThrough : null,
+                    decoration: isCompleted ? TextDecoration.lineThrough : null,
                   ),
                 ),
               ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:memory_assist/features/guardian/services/safe_locations_service.dart';
 
 class SafeLocationsScreen extends StatelessWidget {
   const SafeLocationsScreen({super.key});
@@ -14,37 +16,45 @@ class SafeLocationsScreen extends StatelessWidget {
         backgroundColor: const Color(0xFFFFCC00), // High contrast Yellow
         foregroundColor: Colors.black,
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: const [
-          _LocationCard(
-            label: 'HOME',
-            icon: Icons.home,
-            address: '123 Sweet Home Ave',
-            color: Colors.lightGreenAccent,
-          ),
-          SizedBox(height: 16),
-          _LocationCard(
-            label: 'HOSPITAL',
-            icon: Icons.local_hospital,
-            address: 'City General Hospital',
-            color: Colors.redAccent,
-          ),
-          SizedBox(height: 16),
-          _LocationCard(
-            label: 'PARK',
-            icon: Icons.park,
-            address: 'Central Park',
-            color: Colors.lightBlueAccent,
-          ),
-          SizedBox(height: 16),
-          _LocationCard(
-            label: 'SHOP',
-            icon: Icons.shopping_cart,
-            address: 'Market Street',
-            color: Colors.orangeAccent,
-          ),
-        ],
+      body: Consumer(
+        builder: (context, ref, child) {
+          final service = ref.watch(safeLocationsServiceProvider);
+          // TODO: Use actual patient ID
+          const patientId = 'patient_uid_mock';
+
+          return StreamBuilder<QuerySnapshot>(
+            stream: service.getLocations(patientId),
+            builder: (context, snapshot) {
+              if (snapshot.hasError) return const Center(child: Text('Error loading places'));
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              final locations = snapshot.data!.docs;
+
+              if (locations.isEmpty) {
+                return const Center(child: Text('No safe places added yet.', style: TextStyle(fontSize: 24)));
+              }
+
+              return ListView(
+                padding: const EdgeInsets.all(16),
+                children: locations.map((doc) {
+                  final data = doc.data() as Map<String, dynamic>;
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: _LocationCard(
+                      label: data['name'] ?? 'Unknown',
+                      icon: Icons.place, 
+                      address: data['address'] ?? '',
+                      // cycle colors or just random
+                      color: Colors.lightBlueAccent,
+                    ),
+                  );
+                }).toList(),
+              );
+            },
+          );
+        },
       ),
     );
   }

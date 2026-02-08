@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:memory_assist/features/guardian/screens/add_reminder_screen.dart';
+import 'package:memory_assist/features/guardian/screens/manage_faces_screen.dart';
+import 'package:memory_assist/features/guardian/screens/add_safe_location_screen.dart';
+import 'package:memory_assist/features/guardian/screens/sos_monitor_screen.dart';
 
 class GuardianHomeScreen extends StatelessWidget {
   const GuardianHomeScreen({super.key});
@@ -78,7 +82,8 @@ class GuardianHomeScreen extends StatelessWidget {
                   title: 'Reminders',
                   color: Colors.orange.shade100,
                   onTap: () {
-                    // TODO: Navigate to Reminder Manager
+                    // TODO: Pass actual patient ID
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const AddReminderScreen(patientId: 'patient_uid_mock')));
                   },
                 ),
                 _DashboardCard(
@@ -86,7 +91,7 @@ class GuardianHomeScreen extends StatelessWidget {
                   title: 'Face Gallery',
                   color: Colors.purple.shade100,
                   onTap: () {
-                    // TODO: Navigate to Face Gallery
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const ManageFacesScreen()));
                   },
                 ),
                 _DashboardCard(
@@ -94,7 +99,8 @@ class GuardianHomeScreen extends StatelessWidget {
                   title: 'Safe Locations', // "guardian can add locations"
                   color: Colors.green.shade100,
                   onTap: () {
-                     // TODO: Navigate to Location Manager
+                     // TODO: Pass actual patient ID
+                     Navigator.push(context, MaterialPageRoute(builder: (_) => const AddSafeLocationScreen(patientId: 'patient_uid_mock')));
                   },
                 ),
                 _DashboardCard(
@@ -102,7 +108,7 @@ class GuardianHomeScreen extends StatelessWidget {
                   title: 'SOS Monitor',
                   color: Colors.red.shade100,
                   onTap: () {
-                    // TODO: Navigate to SOS Monitor
+                    Navigator.push(context, MaterialPageRoute(builder: (_) => const SOSMonitorScreen()));
                   },
                 ),
               ],
