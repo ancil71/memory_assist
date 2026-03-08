@@ -1,45 +1,31 @@
-import 'dart:io';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_mlkit_face_detection/google_mlkit_face_detection.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'dart:ui';
 
-final faceRecognitionServiceProvider = Provider((ref) => FaceRecognitionService());
+import 'face_recognition_service_stub.dart'
+    if (dart.library.io) 'face_recognition_service_mobile.dart'
+    if (dart.library.html) 'face_recognition_service_web.dart';
 
-class FaceRecognitionService {
-  late FaceDetector _faceDetector;
+final faceRecognitionServiceProvider = Provider<FaceRecognitionService>((ref) {
+  return getInstance();
+});
 
-  FaceRecognitionService() {
-    final options = FaceDetectorOptions(
-      enableClassification: true,
-      enableLandmarks: true,
-      enableContours: true,
-      enableTracking: true,
-      performanceMode: FaceDetectorMode.accurate,
-    );
-    _faceDetector = FaceDetector(options: options);
-  }
+abstract class FaceRecognitionService {
+  Future<void> initialize();
+  // Returns FaceResult objects. 
+  Future<List<FaceResult>> detectFaces(XFile imageFile);
+  
+  // Takes the alignedFace from FaceResult (dynamic type to handle diff platforms)
+  Future<List<double>> generateEmbedding(dynamic alignedFace);
+  
+  String? findBestMatch(List<double> capturedEmbedding, List<Map<String, dynamic>> storedFaces);
+  void dispose();
+}
 
-  Future<List<Face>> detectFaces(InputImage inputImage) async {
-    try {
-      return await _faceDetector.processImage(inputImage);
-    } catch (e) {
-      print('Error detecting faces: $e');
-      return [];
-    }
-  }
+class FaceResult {
+  final Rect boundingBox;
+  final dynamic alignedFace; // cv.Mat (Mobile) or JsObject (Web)
 
-  // Placeholder for Embedding Comparison Logic
-  // In a real app, you would use a TFLite model (like MobileFaceNet) to generate embeddings
-  // and compare them with stored embeddings in Firestore using cosine similarity.
-  // Since we are using ML Kit, we can try to recognize based on simple heuristics or just show "Unknown"
-  // until a custom model is integrated.
-  Future<String> identifyFace(Face face) async {
-    // TODO: Integrate TFLite for Face Embeddings
-    await Future.delayed(const Duration(milliseconds: 500));
-    return "Unknown Person"; 
-  }
-
-  void dispose() {
-    _faceDetector.close();
-  }
+  FaceResult({required this.boundingBox, required this.alignedFace});
 }

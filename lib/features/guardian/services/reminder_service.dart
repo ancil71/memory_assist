@@ -47,4 +47,27 @@ class ReminderService {
   Future<void> deleteReminder(String reminderId) async {
     await _firestore.collection('reminders').doc(reminderId).delete();
   }
+
+  // Update Reminder (for edit)
+  Future<void> updateReminder({
+    required String reminderId,
+    String? title,
+    String? type,
+    DateTime? time,
+    String? repeat,
+  }) async {
+    final Map<String, dynamic> updates = {};
+    if (title != null) updates['title'] = title;
+    if (type != null) updates['type'] = type;
+    if (time != null) updates['time'] = Timestamp.fromDate(time);
+    if (repeat != null) updates['repeat'] = repeat;
+    if (updates.isNotEmpty) {
+      await _firestore.collection('reminders').doc(reminderId).update(updates);
+    }
+  }
+
+  // Update order (sort_order field for reordering)
+  Future<void> updateOrder(String reminderId, int sortOrder) async {
+    await _firestore.collection('reminders').doc(reminderId).update({'sort_order': sortOrder});
+  }
 }

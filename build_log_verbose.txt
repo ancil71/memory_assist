@@ -1,0 +1,798 @@
+[ +306 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[   +1 ms] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[   +1 ms] executing: [C:\flutter/] git -c log.showSignature=false log HEAD -n 1 --pretty=format:%ad --date=iso
+[ +116 ms] Exit code 0 from: git -c log.showSignature=false log HEAD -n 1 --pretty=format:%ad --date=iso
+[        ] 2025-12-03 14:56:10 -0800
+[  +18 ms] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterWebSdk' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[        ] Artifact Instance of 'LegacyCanvasKitRemover' is not required, skipping update.
+[   +3 ms] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[  +69 ms] Artifact Instance of 'MaterialFonts' is not required, skipping update.
+[        ] Artifact Instance of 'GradleWrapper' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidGenSnapshotArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'AndroidInternalBuildArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterEngineStamp' is not required, skipping update.
+[   +2 ms] Artifact Instance of 'FlutterSdk' is not required, skipping update.
+[        ] Artifact Instance of 'WindowsEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxEngineArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'LinuxFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'MacOSFuchsiaSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerSDKArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FlutterRunnerDebugSymbols' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'IosUsbArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'FontSubsetArtifacts' is not required, skipping update.
+[        ] Artifact Instance of 'PubDependencies' is not required, skipping update.
+[  +13 ms] Skipping pub get: version match.
+[  +98 ms] Found plugin url_launcher at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher-6.3.2\
+[   +8 ms] Found plugin url_launcher_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.5\
+[  +12 ms] Found plugin url_launcher_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.4.2\
+[  +10 ms] Found plugin url_launcher_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_macos-3.2.5\
+[   +4 ms] Found plugin url_launcher_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.2\
+[   +6 ms] Found plugin url_launcher_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_ios-6.4.1\
+[   +5 ms] Found plugin url_launcher_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_android-6.3.28\
+[   +5 ms] Found plugin sound_stream at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\sound_stream-0.4.2\
+[   +5 ms] Found plugin share_plus at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\share_plus-12.0.1\
+[  +28 ms] Found plugin path_provider at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[   +4 ms] Found plugin path_provider_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[  +12 ms] Found plugin path_provider_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[  +12 ms] Found plugin path_provider_foundation at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.6.0\
+[  +19 ms] Found plugin path_provider_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.22\
+[   +5 ms] Found plugin record at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record-6.2.0\
+[   +2 ms] Found plugin record_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_windows-1.0.7\
+[   +3 ms] Found plugin record_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_web-1.3.0\
+[   +3 ms] Found plugin record_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_macos-1.2.1\
+[   +1 ms] Found plugin record_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_linux-1.3.0\
+[   +1 ms] Found plugin record_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_ios-1.2.0\
+[   +1 ms] Found plugin record_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_android-1.5.1\
+[   +2 ms] Found plugin permission_handler at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler-12.0.1\
+[   +1 ms] Found plugin permission_handler_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_windows-0.2.1\
+[   +1 ms] Found plugin permission_handler_html at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_html-0.1.3+5\
+[   +1 ms] Found plugin permission_handler_apple at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_apple-9.4.7\
+[   +1 ms] Found plugin permission_handler_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-13.0.1\
+[   +2 ms] Found plugin image_picker at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.2.1\
+[   +1 ms] Found plugin image_picker_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.2\
+[   +4 ms] Found plugin file_selector_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+5\
+[   +1 ms] Found plugin image_picker_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.2+1\
+[   +1 ms] Found plugin file_selector_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.5\
+[   +1 ms] Found plugin image_picker_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.2\
+[   +1 ms] Found plugin file_selector_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.4\
+[   +1 ms] Found plugin image_picker_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.13+6\
+[   +1 ms] Found plugin image_picker_for_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.1.1\
+[        ] Found plugin image_picker_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.13+13\
+[        ] Found plugin flutter_plugin_android_lifecycle at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.33\
+[   +1 ms] Found plugin google_mlkit_face_detection at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_face_detection-0.13.2\
+[   +1 ms] Found plugin google_mlkit_commons at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_commons-0.11.1\
+[   +1 ms] Found plugin google_maps_flutter at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter-2.14.2\
+[   +1 ms] Found plugin google_maps_flutter_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_web-0.5.14+3\
+[   +4 ms] Found plugin google_maps_flutter_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_ios-2.17.3\
+[        ] Found plugin google_maps_flutter_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_android-2.19.0\
+[   +2 ms] Found plugin geolocator at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator-14.0.2\
+[        ] Found plugin geolocator_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_windows-0.2.5\
+[   +1 ms] Found plugin geolocator_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_web-4.1.3\
+[        ] Found plugin geolocator_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_linux-0.2.4\
+[   +1 ms] Found plugin package_info_plus at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-9.0.0\
+[   +5 ms] Found plugin geolocator_apple at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_apple-2.3.13\
+[        ] Found plugin geolocator_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-5.0.2\
+[   +1 ms] Found plugin geocoding at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding-3.0.0\
+[   +1 ms] Found plugin geocoding_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_ios-3.1.0\
+[        ] Found plugin geocoding_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_android-3.3.1\
+[  +15 ms] Found plugin firebase_storage at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_storage-13.0.6\
+[   +1 ms] Found plugin firebase_storage_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_storage_web-3.11.2\
+[   +1 ms] Found plugin firebase_core at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_core-4.4.0\
+[        ] Found plugin firebase_core_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_core_web-3.4.0\
+[   +2 ms] Found plugin firebase_messaging at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_messaging-16.1.1\
+[   +1 ms] Found plugin firebase_messaging_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_messaging_web-4.1.2\
+[   +1 ms] Found plugin firebase_auth at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_auth-6.1.4\
+[   +1 ms] Found plugin firebase_auth_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_auth_web-6.1.2\
+[   +2 ms] Found plugin cloud_firestore at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\cloud_firestore-6.1.2\
+[   +1 ms] Found plugin cloud_firestore_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\cloud_firestore_web-5.1.2\
+[   +1 ms] Found plugin camera at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera-0.11.3+1\
+[   +1 ms] Found plugin camera_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_web-0.3.5+3\
+[   +1 ms] Found plugin camera_avfoundation at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_avfoundation-0.9.23+2\
+[        ] Found plugin camera_android_camerax at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.30\
+[   +1 ms] Found plugin audioplayers at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers-6.5.1\
+[   +1 ms] Found plugin audioplayers_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_windows-4.2.1\
+[   +1 ms] Found plugin audioplayers_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_web-5.1.1\
+[        ] Found plugin audioplayers_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_linux-4.2.1\
+[        ] Found plugin audioplayers_darwin at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_darwin-6.3.0\
+[        ] Found plugin audioplayers_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_android-5.2.1\
+[   +1 ms] Found plugin audio_session at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audio_session-0.2.2\
+[  +48 ms] Found plugin url_launcher at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher-6.3.2\
+[   +1 ms] Found plugin url_launcher_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.5\
+[   +1 ms] Found plugin url_launcher_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.4.2\
+[   +2 ms] Found plugin url_launcher_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_macos-3.2.5\
+[   +1 ms] Found plugin url_launcher_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.2\
+[   +1 ms] Found plugin url_launcher_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_ios-6.4.1\
+[        ] Found plugin url_launcher_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_android-6.3.28\
+[        ] Found plugin sound_stream at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\sound_stream-0.4.2\
+[        ] Found plugin share_plus at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\share_plus-12.0.1\
+[   +2 ms] Found plugin path_provider at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[        ] Found plugin path_provider_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[   +2 ms] Found plugin path_provider_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[   +1 ms] Found plugin path_provider_foundation at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.6.0\
+[   +6 ms] Found plugin path_provider_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.22\
+[   +2 ms] Found plugin record at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record-6.2.0\
+[        ] Found plugin record_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_windows-1.0.7\
+[   +1 ms] Found plugin record_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_web-1.3.0\
+[        ] Found plugin record_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_macos-1.2.1\
+[        ] Found plugin record_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_linux-1.3.0\
+[        ] Found plugin record_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_ios-1.2.0\
+[        ] Found plugin record_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_android-1.5.1\
+[        ] Found plugin permission_handler at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler-12.0.1\
+[        ] Found plugin permission_handler_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_windows-0.2.1\
+[   +1 ms] Found plugin permission_handler_html at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_html-0.1.3+5\
+[        ] Found plugin permission_handler_apple at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_apple-9.4.7\
+[        ] Found plugin permission_handler_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-13.0.1\
+[   +1 ms] Found plugin image_picker at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.2.1\
+[   +1 ms] Found plugin image_picker_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.2\
+[   +3 ms] Found plugin file_selector_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+5\
+[   +1 ms] Found plugin image_picker_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.2+1\
+[   +1 ms] Found plugin file_selector_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.5\
+[   +1 ms] Found plugin image_picker_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.2\
+[        ] Found plugin file_selector_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.4\
+[        ] Found plugin image_picker_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.13+6\
+[        ] Found plugin image_picker_for_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.1.1\
+[        ] Found plugin image_picker_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.13+13\
+[   +1 ms] Found plugin flutter_plugin_android_lifecycle at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.33\
+[   +1 ms] Found plugin google_mlkit_face_detection at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_face_detection-0.13.2\
+[   +1 ms] Found plugin google_mlkit_commons at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_commons-0.11.1\
+[        ] Found plugin google_maps_flutter at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter-2.14.2\
+[        ] Found plugin google_maps_flutter_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_web-0.5.14+3\
+[   +3 ms] Found plugin google_maps_flutter_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_ios-2.17.3\
+[        ] Found plugin google_maps_flutter_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_android-2.19.0\
+[   +1 ms] Found plugin geolocator at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator-14.0.2\
+[        ] Found plugin geolocator_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_windows-0.2.5\
+[   +1 ms] Found plugin geolocator_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_web-4.1.3\
+[        ] Found plugin geolocator_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_linux-0.2.4\
+[        ] Found plugin package_info_plus at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-9.0.0\
+[   +4 ms] Found plugin geolocator_apple at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_apple-2.3.13\
+[        ] Found plugin geolocator_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-5.0.2\
+[        ] Found plugin geocoding at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding-3.0.0\
+[   +1 ms] Found plugin geocoding_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_ios-3.1.0\
+[   +1 ms] Found plugin geocoding_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_android-3.3.1\
+[  +13 ms] Found plugin firebase_storage at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_storage-13.0.6\
+[        ] Found plugin firebase_storage_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_storage_web-3.11.2\
+[        ] Found plugin firebase_core at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_core-4.4.0\
+[        ] Found plugin firebase_core_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_core_web-3.4.0\
+[   +1 ms] Found plugin firebase_messaging at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_messaging-16.1.1\
+[        ] Found plugin firebase_messaging_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_messaging_web-4.1.2\
+[   +1 ms] Found plugin firebase_auth at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_auth-6.1.4\
+[        ] Found plugin firebase_auth_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_auth_web-6.1.2\
+[   +2 ms] Found plugin cloud_firestore at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\cloud_firestore-6.1.2\
+[        ] Found plugin cloud_firestore_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\cloud_firestore_web-5.1.2\
+[   +1 ms] Found plugin camera at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera-0.11.3+1\
+[        ] Found plugin camera_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_web-0.3.5+3\
+[   +1 ms] Found plugin camera_avfoundation at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_avfoundation-0.9.23+2\
+[        ] Found plugin camera_android_camerax at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.30\
+[   +1 ms] Found plugin audioplayers at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers-6.5.1\
+[   +1 ms] Found plugin audioplayers_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_windows-4.2.1\
+[   +1 ms] Found plugin audioplayers_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_web-5.1.1\
+[        ] Found plugin audioplayers_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_linux-4.2.1\
+[        ] Found plugin audioplayers_darwin at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_darwin-6.3.0\
+[        ] Found plugin audioplayers_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_android-5.2.1\
+[        ] Found plugin audio_session at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audio_session-0.2.2\
+[   +8 ms] Skipping generating web_plugin_registrant.dart because it is up-to-date.
+[  +19 ms] Found plugin url_launcher at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher-6.3.2\
+[   +1 ms] Found plugin url_launcher_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.5\
+[   +1 ms] Found plugin url_launcher_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.4.2\
+[   +1 ms] Found plugin url_launcher_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_macos-3.2.5\
+[        ] Found plugin url_launcher_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.2\
+[        ] Found plugin url_launcher_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_ios-6.4.1\
+[        ] Found plugin url_launcher_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_android-6.3.28\
+[        ] Found plugin sound_stream at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\sound_stream-0.4.2\
+[        ] Found plugin share_plus at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\share_plus-12.0.1\
+[   +2 ms] Found plugin path_provider at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[        ] Found plugin path_provider_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[   +1 ms] Found plugin path_provider_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[        ] Found plugin path_provider_foundation at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.6.0\
+[   +5 ms] Found plugin path_provider_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.22\
+[   +1 ms] Found plugin record at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record-6.2.0\
+[        ] Found plugin record_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_windows-1.0.7\
+[   +1 ms] Found plugin record_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_web-1.3.0\
+[        ] Found plugin record_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_macos-1.2.1\
+[        ] Found plugin record_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_linux-1.3.0\
+[        ] Found plugin record_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_ios-1.2.0\
+[        ] Found plugin record_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_android-1.5.1\
+[        ] Found plugin permission_handler at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler-12.0.1\
+[        ] Found plugin permission_handler_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_windows-0.2.1\
+[        ] Found plugin permission_handler_html at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_html-0.1.3+5\
+[        ] Found plugin permission_handler_apple at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_apple-9.4.7\
+[        ] Found plugin permission_handler_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-13.0.1\
+[   +1 ms] Found plugin image_picker at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.2.1\
+[   +1 ms] Found plugin image_picker_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.2\
+[   +1 ms] Found plugin file_selector_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+5\
+[   +1 ms] Found plugin image_picker_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.2+1\
+[        ] Found plugin file_selector_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.5\
+[        ] Found plugin image_picker_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.2\
+[        ] Found plugin file_selector_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.4\
+[        ] Found plugin image_picker_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.13+6\
+[        ] Found plugin image_picker_for_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.1.1\
+[        ] Found plugin image_picker_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.13+13\
+[        ] Found plugin flutter_plugin_android_lifecycle at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.33\
+[        ] Found plugin google_mlkit_face_detection at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_face_detection-0.13.2\
+[        ] Found plugin google_mlkit_commons at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_commons-0.11.1\
+[        ] Found plugin google_maps_flutter at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter-2.14.2\
+[        ] Found plugin google_maps_flutter_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_web-0.5.14+3\
+[   +3 ms] Found plugin google_maps_flutter_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_ios-2.17.3\
+[        ] Found plugin google_maps_flutter_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_android-2.19.0\
+[   +1 ms] Found plugin geolocator at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator-14.0.2\
+[        ] Found plugin geolocator_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_windows-0.2.5\
+[        ] Found plugin geolocator_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_web-4.1.3\
+[        ] Found plugin geolocator_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_linux-0.2.4\
+[        ] Found plugin package_info_plus at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-9.0.0\
+[   +3 ms] Found plugin geolocator_apple at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_apple-2.3.13\
+[        ] Found plugin geolocator_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-5.0.2\
+[        ] Found plugin geocoding at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding-3.0.0\
+[        ] Found plugin geocoding_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_ios-3.1.0\
+[        ] Found plugin geocoding_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_android-3.3.1\
+[  +10 ms] Found plugin firebase_storage at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_storage-13.0.6\
+[        ] Found plugin firebase_storage_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_storage_web-3.11.2\
+[        ] Found plugin firebase_core at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_core-4.4.0\
+[        ] Found plugin firebase_core_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_core_web-3.4.0\
+[   +1 ms] Found plugin firebase_messaging at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_messaging-16.1.1\
+[        ] Found plugin firebase_messaging_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_messaging_web-4.1.2\
+[   +1 ms] Found plugin firebase_auth at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_auth-6.1.4\
+[        ] Found plugin firebase_auth_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_auth_web-6.1.2\
+[   +1 ms] Found plugin cloud_firestore at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\cloud_firestore-6.1.2\
+[        ] Found plugin cloud_firestore_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\cloud_firestore_web-5.1.2\
+[   +1 ms] Found plugin camera at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera-0.11.3+1\
+[        ] Found plugin camera_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_web-0.3.5+3\
+[   +1 ms] Found plugin camera_avfoundation at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_avfoundation-0.9.23+2\
+[        ] Found plugin camera_android_camerax at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.30\
+[        ] Found plugin audioplayers at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers-6.5.1\
+[   +1 ms] Found plugin audioplayers_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_windows-4.2.1\
+[        ] Found plugin audioplayers_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_web-5.1.1\
+[        ] Found plugin audioplayers_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_linux-4.2.1\
+[        ] Found plugin audioplayers_darwin at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_darwin-6.3.0\
+[        ] Found plugin audioplayers_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_android-5.2.1\
+[        ] Found plugin audio_session at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audio_session-0.2.2\
+[   +5 ms] Generating C:\Users\ASUS\gravity_things\memory_assist\android\app\src\main\java\io\flutter\plugins\GeneratedPluginRegistrant.java
+[   +1 ms] Skipping generating GeneratedPluginRegistrant.java because it is up-to-date.
+[   +3 ms] Skipping generating generated_plugin_registrant.h because it is up-to-date.
+[        ] Skipping generating generated_plugin_registrant.cc because it is up-to-date.
+[        ] Skipping generating generated_plugins.cmake because it is up-to-date.
+[   +1 ms] Skipping generating generated_plugin_registrant.h because it is up-to-date.
+[        ] Skipping generating generated_plugin_registrant.cc because it is up-to-date.
+[        ] Skipping generating generated_plugins.cmake because it is up-to-date.
+[   +1 ms] Skipping generating GeneratedPluginRegistrant.h because it is up-to-date.
+[   +1 ms] Skipping generating GeneratedPluginRegistrant.m because it is up-to-date.
+[        ] Skipping generating GeneratedPluginRegistrant.swift because it is up-to-date.
+[  +99 ms] Found plugin url_launcher at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher-6.3.2\
+[   +1 ms] Found plugin url_launcher_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_windows-3.1.5\
+[   +3 ms] Found plugin url_launcher_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_web-2.4.2\
+[   +2 ms] Found plugin url_launcher_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_macos-3.2.5\
+[        ] Found plugin url_launcher_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_linux-3.2.2\
+[        ] Found plugin url_launcher_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_ios-6.4.1\
+[        ] Found plugin url_launcher_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\url_launcher_android-6.3.28\
+[        ] Found plugin sound_stream at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\sound_stream-0.4.2\
+[        ] Found plugin share_plus at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\share_plus-12.0.1\
+[   +2 ms] Found plugin path_provider at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider-2.1.5\
+[        ] Found plugin path_provider_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_windows-2.3.0\
+[   +2 ms] Found plugin path_provider_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_linux-2.2.1\
+[   +1 ms] Found plugin path_provider_foundation at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_foundation-2.6.0\
+[  +19 ms] Found plugin path_provider_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\path_provider_android-2.2.22\
+[   +1 ms] Found plugin record at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record-6.2.0\
+[        ] Found plugin record_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_windows-1.0.7\
+[   +1 ms] Found plugin record_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_web-1.3.0\
+[        ] Found plugin record_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_macos-1.2.1\
+[        ] Found plugin record_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_linux-1.3.0\
+[        ] Found plugin record_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_ios-1.2.0\
+[        ] Found plugin record_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\record_android-1.5.1\
+[        ] Found plugin permission_handler at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler-12.0.1\
+[        ] Found plugin permission_handler_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_windows-0.2.1\
+[   +1 ms] Found plugin permission_handler_html at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_html-0.1.3+5\
+[        ] Found plugin permission_handler_apple at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_apple-9.4.7\
+[        ] Found plugin permission_handler_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\permission_handler_android-13.0.1\
+[   +1 ms] Found plugin image_picker at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker-1.2.1\
+[        ] Found plugin image_picker_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_windows-0.2.2\
+[   +2 ms] Found plugin file_selector_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_windows-0.9.3+5\
+[   +1 ms] Found plugin image_picker_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_macos-0.2.2+1\
+[        ] Found plugin file_selector_macos at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_macos-0.9.5\
+[        ] Found plugin image_picker_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_linux-0.2.2\
+[        ] Found plugin file_selector_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\file_selector_linux-0.9.4\
+[        ] Found plugin image_picker_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_ios-0.8.13+6\
+[        ] Found plugin image_picker_for_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_for_web-3.1.1\
+[        ] Found plugin image_picker_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\image_picker_android-0.8.13+13\
+[        ] Found plugin flutter_plugin_android_lifecycle at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\flutter_plugin_android_lifecycle-2.0.33\
+[   +1 ms] Found plugin google_mlkit_face_detection at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_face_detection-0.13.2\
+[        ] Found plugin google_mlkit_commons at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_mlkit_commons-0.11.1\
+[        ] Found plugin google_maps_flutter at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter-2.14.2\
+[        ] Found plugin google_maps_flutter_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_web-0.5.14+3\
+[   +3 ms] Found plugin google_maps_flutter_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_ios-2.17.3\
+[        ] Found plugin google_maps_flutter_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\google_maps_flutter_android-2.19.0\
+[   +1 ms] Found plugin geolocator at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator-14.0.2\
+[        ] Found plugin geolocator_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_windows-0.2.5\
+[   +1 ms] Found plugin geolocator_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_web-4.1.3\
+[        ] Found plugin geolocator_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_linux-0.2.4\
+[        ] Found plugin package_info_plus at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\package_info_plus-9.0.0\
+[   +3 ms] Found plugin geolocator_apple at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_apple-2.3.13\
+[        ] Found plugin geolocator_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geolocator_android-5.0.2\
+[        ] Found plugin geocoding at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding-3.0.0\
+[        ] Found plugin geocoding_ios at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_ios-3.1.0\
+[        ] Found plugin geocoding_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\geocoding_android-3.3.1\
+[  +11 ms] Found plugin firebase_storage at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_storage-13.0.6\
+[        ] Found plugin firebase_storage_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_storage_web-3.11.2\
+[   +2 ms] Found plugin firebase_core at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_core-4.4.0\
+[  +16 ms] Found plugin firebase_core_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_core_web-3.4.0\
+[   +2 ms] Found plugin firebase_messaging at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_messaging-16.1.1\
+[        ] Found plugin firebase_messaging_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_messaging_web-4.1.2\
+[   +1 ms] Found plugin firebase_auth at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_auth-6.1.4\
+[        ] Found plugin firebase_auth_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\firebase_auth_web-6.1.2\
+[   +1 ms] Found plugin cloud_firestore at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\cloud_firestore-6.1.2\
+[        ] Found plugin cloud_firestore_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\cloud_firestore_web-5.1.2\
+[   +1 ms] Found plugin camera at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera-0.11.3+1\
+[        ] Found plugin camera_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_web-0.3.5+3\
+[   +1 ms] Found plugin camera_avfoundation at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_avfoundation-0.9.23+2\
+[        ] Found plugin camera_android_camerax at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\camera_android_camerax-0.6.30\
+[        ] Found plugin audioplayers at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers-6.5.1\
+[   +1 ms] Found plugin audioplayers_windows at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_windows-4.2.1\
+[   +1 ms] Found plugin audioplayers_web at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_web-5.1.1\
+[        ] Found plugin audioplayers_linux at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_linux-4.2.1\
+[        ] Found plugin audioplayers_darwin at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_darwin-6.3.0\
+[        ] Found plugin audioplayers_android at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audioplayers_android-5.2.1\
+[        ] Found plugin audio_session at C:\Users\ASUS\AppData\Local\Pub\Cache\hosted\pub.dev\audio_session-0.2.2\
+[   +1 ms] generated_plugin_registrant.dart not found. Skipping.
+[        ] Compiling lib\main.dart for the Web...
+[   +7 ms] Initializing file store
+[   +6 ms] Done initializing file store
+[  +38 ms] Skipping target: web_entrypoint
+[   +1 ms] invalidated build due to missing files: C:\Users\ASUS\gravity_things\memory_assist\web\*\index.html, C:\Users\ASUS\gravity_things\memory_assist\web\flutter_bootstrap.js
+[   +4 ms] Skipping target: dart_build
+[        ] Skipping target: gen_localizations
+[   +1 ms] web_templated_files: Starting due to {InvalidatedReasonKind.outputMissing: The following outputs were missing: C:\Users\ASUS\gravity_things\memory_assist\build\web\*\index.html, InvalidatedReasonKind.inputMissing: The following inputs were missing: C:\Users\ASUS\gravity_things\memory_assist\web\*\index.html,C:\Users\ASUS\gravity_things\memory_assist\web\flutter_bootstrap.js}
+[        ] web_static_assets: Starting due to {InvalidatedReasonKind.outputMissing: The following outputs were missing: C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\flutter.js,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\canvaskit.js,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\canvaskit.js.symbols,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\canvaskit.wasm,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\chromium\canvaskit.js,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\chromium\canvaskit.js.symbols,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\chromium\canvaskit.wasm,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\skwasm.js,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\skwasm.js.symbols,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\skwasm.wasm,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\skwasm_heavy.js,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\skwasm_heavy.js.symbols,C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\canvaskit\skwasm_heavy.wasm}
+[ +526 ms] web_static_assets: Complete
+[   +6 ms] dart2js: Starting due to {InvalidatedReasonKind.buildKeyChanged: The target build key changed., InvalidatedReasonKind.outputSetAddition: The following outputs were added to the output set: C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\main.dart.js}
+[   +7 ms] executing: C:\flutter\bin\cache\dart-sdk\bin\dart.exe compile js --platform-binaries=C:\flutter\bin\cache\flutter_web_sdk\kernel --invoker=flutter_tool -Ddart.vm.product=true -DFLUTTER_VERSION=3.38.4 -DFLUTTER_CHANNEL=stable -DFLUTTER_GIT_URL=https://github.com/flutter/flutter.git -DFLUTTER_FRAMEWORK_REVISION=66dd93f9a2 -DFLUTTER_ENGINE_REVISION=a5cb96369e -DFLUTTER_DART_VERSION=3.10.3 -DFLUTTER_WEB_USE_SKIA=true -DFLUTTER_WEB_USE_SKWASM=false -DFLUTTER_WEB_CANVASKIT_URL=https://www.gstatic.com/flutter-canvaskit/a5cb96369ef86c7e85abf5d662a1ca5d89775053/ --native-null-assertions --no-source-maps -O4 --minify -o C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\app.dill --packages=C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\package_config.json --cfe-only C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\main.dart
+[        ] dart2wasm: Starting due to {}
+[   +1 ms] executing: C:\flutter\bin\cache\dart-sdk\bin\dart.exe compile wasm --packages=C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\package_config.json --extra-compiler-option=--platform=C:\flutter\bin\cache\flutter_web_sdk\kernel\dart2wasm_platform.dill -Ddart.vm.profile=false -Ddart.vm.product=true --extra-compiler-option=--delete-tostring-package-uri=dart:ui --extra-compiler-option=--delete-tostring-package-uri=package:flutter --extra-compiler-option=--import-shared-memory --extra-compiler-option=--shared-memory-max-pages=32768 -DFLUTTER_VERSION=3.38.4 -DFLUTTER_CHANNEL=stable -DFLUTTER_GIT_URL=https://github.com/flutter/flutter.git -DFLUTTER_FRAMEWORK_REVISION=66dd93f9a2 -DFLUTTER_ENGINE_REVISION=a5cb96369e -DFLUTTER_DART_VERSION=3.10.3 -DFLUTTER_WEB_USE_SKIA=false -DFLUTTER_WEB_USE_SKWASM=true -DFLUTTER_WEB_CANVASKIT_URL=https://www.gstatic.com/flutter-canvaskit/a5cb96369ef86c7e85abf5d662a1ca5d89775053/ --extra-compiler-option=--depfile=C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\dart2wasm.d -O2 --strip-wasm --no-source-maps --minify --extra-compiler-option=--dry-run -o C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\main.dart.wasm C:\Users\ASUS\gravity_things\memory_assist\.dart_tool\flutter_build\a69ee00129f4785b99e3344a03a1a90e\main.dart
+[  +56 ms] web_templated_files: Complete
+[+33968 ms] lib/features/guardian/screens/live_tracking_screen.dart:140:114:
+            Error: No named parameter with the name 'fontSize'.
+                                style: ElevatedButton.styleFrom(backgroundColor: Colors.teal, foregroundColor: Colors.white, fontSize: 18),
+                                                                                          ^^^^^^^^
+            /C:/flutter/packages/flutter/lib/src/material/elevated_button.dart:206:22:
+            Info: Found this candidate, but the arguments don't match.
+              static ButtonStyle styleFrom({
+                                 ^^^^^^^^^
+            Error: Compilation failed.
+flutter : [+105323 
+ms] Wasm dry run 
+succeeded. Consider 
+building and testing 
+your application 
+with the `--wasm` 
+flag. See docs for 
+more info: https://do
+cs.flutter.dev/platfo
+rm-integration/web/wa
+sm
+At line:1 char:1
++ flutter build web 
+--verbose 2>&1 | 
+Out-File -Encoding 
+ASCII build_log ...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: ([+10532   
+ 3 ms] Wa...ratio    
+n/web/wasm:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+[   +1 ms] Use 
+--no-wasm-dry-run to 
+disable these 
+warnings.
+[  +15 ms] dart2wasm: Complete
+[   +4 ms] Persisting file store
+[  +23 ms] Done persisting file store
+[   +6 ms] Target 
+dart2js failed: 
+ProcessException: 
+Process exited 
+abnormally with exit 
+code 1:
+           lib/featur
+es/guardian/screens/l
+ive_tracking_screen.d
+art:140:114:
+           Error: No 
+named parameter with 
+the name 'fontSize'.
+                     
+          style: Elev
+atedButton.styleFrom(
+backgroundColor: 
+Colors.teal, 
+foregroundColor: 
+Colors.white, 
+fontSize: 18),
+                     
+                     
+                     
+                     
+      ^^^^^^^^
+           /C:/flutte
+r/packages/flutter/li
+b/src/material/elevat
+ed_button.dart:206:22
+:
+           Info: 
+Found this 
+candidate, but the 
+arguments don't 
+match.
+             static 
+ButtonStyle 
+styleFrom({
+                     
+           ^^^^^^^^^
+           Error: 
+Compilation failed.
+             
+Command: C:\flutter\b
+in\cache\dart-sdk\bin
+\dart.exe compile js 
+--platform-binaries=C
+:\flutter\bin\cache\f
+lutter_web_sdk\kernel
+ --invoker=flutter_to
+ol -Ddart.vm.product=
+true -DFLUTTER_VERSIO
+N=3.38.4 -DFLUTTER_CH
+ANNEL=stable -DFLUTTE
+R_GIT_URL=https://git
+hub.com/flutter/flutt
+er.git -DFLUTTER_FRAM
+EWORK_REVISION=66dd93
+f9a2 -DFLUTTER_ENGINE
+_REVISION=a5cb96369e 
+-DFLUTTER_DART_VERSIO
+N=3.10.3 -DFLUTTER_WE
+B_USE_SKIA=true -DFLU
+TTER_WEB_USE_SKWASM=f
+alse -DFLUTTER_WEB_CA
+NVASKIT_URL=https://w
+ww.gstatic.com/flutte
+r-canvaskit/a5cb96369
+ef86c7e85abf5d662a1ca
+5d89775053/ --native-
+null-assertions 
+--no-source-maps -O4 
+--minify -o C:\Users\
+ASUS\gravity_things\m
+emory_assist\.dart_to
+ol\flutter_build\a69e
+e00129f4785b99e3344a0
+3a1a90e\app.dill --pa
+ckages=C:\Users\ASUS\
+gravity_things\memory
+_assist\.dart_tool\pa
+ckage_config.json 
+--cfe-only C:\Users\A
+SUS\gravity_things\me
+mory_assist\.dart_too
+l\flutter_build\a69ee
+00129f4785b99e3344a03
+a1a90e\main.dart
+           #0      Ru
+nResult.throwExceptio
+n (package:flutter_to
+ols/src/base/process.
+dart:153:5)
+           #1      _D
+efaultProcessUtils.ru
+n (package:flutter_to
+ols/src/base/process.
+dart:379:19)
+           
+<asynchronous 
+suspension>
+           #2      
+Dart2JSTarget.build (
+package:flutter_tools
+/src/build_system/tar
+gets/web.dart:207:5)
+           
+<asynchronous 
+suspension>
+           #3      _B
+uildInstance._invokeI
+nternal (package:flut
+ter_tools/src/build_s
+ystem/build_system.da
+rt:895:9)
+           
+<asynchronous 
+suspension>
+           #4      Fu
+ture.wait.<anonymous 
+closure> (dart:async/
+future.dart:546:21)
+           
+<asynchronous 
+suspension>
+           #5      _B
+uildInstance.invokeTa
+rget (package:flutter
+_tools/src/build_syst
+em/build_system.dart:
+833:32)
+           
+<asynchronous 
+suspension>
+           #6      Fu
+ture.wait.<anonymous 
+closure> (dart:async/
+future.dart:546:21)
+           
+<asynchronous 
+suspension>
+           #7      _B
+uildInstance.invokeTa
+rget (package:flutter
+_tools/src/build_syst
+em/build_system.dart:
+833:32)
+           
+<asynchronous 
+suspension>
+           #8      Fl
+utterBuildSystem.buil
+d (package:flutter_to
+ols/src/build_system/
+build_system.dart:653
+:16)
+           
+<asynchronous 
+suspension>
+           #9      
+WebBuilder.buildWeb (
+package:flutter_tools
+/src/web/compile.dart
+:94:34)
+           
+<asynchronous 
+suspension>
+           #10     Bu
+ildWebCommand.runComm
+and (package:flutter_
+tools/src/commands/bu
+ild_web.dart:296:5)
+           
+<asynchronous 
+suspension>
+           #11     Fl
+utterCommand.run.<ano
+nymous closure> (pack
+age:flutter_tools/src
+/runner/flutter_comma
+nd.dart:1559:27)
+           
+<asynchronous 
+suspension>
+           #12     Ap
+pContext.run.<anonymo
+us closure> (package:
+flutter_tools/src/bas
+e/context.dart:154:19
+)
+           
+<asynchronous 
+suspension>
+           #13     Co
+mmandRunner.runComman
+d (package:args/comma
+nd_runner.dart:212:13
+)
+           
+<asynchronous 
+suspension>
+           #14     Fl
+utterCommandRunner.ru
+nCommand.<anonymous 
+closure> (package:flu
+tter_tools/src/runner
+/flutter_command_runn
+er.dart:487:9)
+           
+<asynchronous 
+suspension>
+           #15     Ap
+pContext.run.<anonymo
+us closure> (package:
+flutter_tools/src/bas
+e/context.dart:154:19
+)
+           
+<asynchronous 
+suspension>
+           #16     Fl
+utterCommandRunner.ru
+nCommand (package:flu
+tter_tools/src/runner
+/flutter_command_runn
+er.dart:422:5)
+           
+<asynchronous 
+suspension>
+           #17     
+run.<anonymous 
+closure>.<anonymous 
+closure> (package:flu
+tter_tools/runner.dar
+t:104:11)
+           
+<asynchronous 
+suspension>
+           #18     Ap
+pContext.run.<anonymo
+us closure> (package:
+flutter_tools/src/bas
+e/context.dart:154:19
+)
+           
+<asynchronous 
+suspension>
+           #19     
+main (package:flutter
+_tools/executable.dar
+t:103:3)
+           
+<asynchronous 
+suspension>
+
+[   +6 ms] Compiling lib\main.dart for the Web... (completed in 140.0s)
+[        ] "flutter web" took 140,967ms.
+[  +91 ms] Error: 
+Failed to compile 
+application for the 
+Web.
+[        ] 
+           #0      
+throwToolExit (packag
+e:flutter_tools/src/b
+ase/common.dart:34:3)
+           #1      
+WebBuilder.buildWeb (
+package:flutter_tools
+/src/web/compile.dart
+:137:7)
+           
+<asynchronous 
+suspension>
+           #2      Bu
+ildWebCommand.runComm
+and (package:flutter_
+tools/src/commands/bu
+ild_web.dart:296:5)
+           
+<asynchronous 
+suspension>
+           #3      Fl
+utterCommand.run.<ano
+nymous closure> (pack
+age:flutter_tools/src
+/runner/flutter_comma
+nd.dart:1559:27)
+           
+<asynchronous 
+suspension>
+           #4      Ap
+pContext.run.<anonymo
+us closure> (package:
+flutter_tools/src/bas
+e/context.dart:154:19
+)
+           
+<asynchronous 
+suspension>
+           #5      Co
+mmandRunner.runComman
+d (package:args/comma
+nd_runner.dart:212:13
+)
+           
+<asynchronous 
+suspension>
+           #6      Fl
+utterCommandRunner.ru
+nCommand.<anonymous 
+closure> (package:flu
+tter_tools/src/runner
+/flutter_command_runn
+er.dart:487:9)
+           
+<asynchronous 
+suspension>
+           #7      Ap
+pContext.run.<anonymo
+us closure> (package:
+flutter_tools/src/bas
+e/context.dart:154:19
+)
+           
+<asynchronous 
+suspension>
+           #8      Fl
+utterCommandRunner.ru
+nCommand (package:flu
+tter_tools/src/runner
+/flutter_command_runn
+er.dart:422:5)
+           
+<asynchronous 
+suspension>
+           #9      
+run.<anonymous 
+closure>.<anonymous 
+closure> (package:flu
+tter_tools/runner.dar
+t:104:11)
+           
+<asynchronous 
+suspension>
+           #10     Ap
+pContext.run.<anonymo
+us closure> (package:
+flutter_tools/src/bas
+e/context.dart:154:19
+)
+           
+<asynchronous 
+suspension>
+           #11     
+main (package:flutter
+_tools/executable.dar
+t:103:3)
+           
+<asynchronous 
+suspension>
+
+
+[        ] Running 1 shutdown hook
+[   +1 ms] Shutdown hooks complete
+[ +257 ms] exiting with code 1

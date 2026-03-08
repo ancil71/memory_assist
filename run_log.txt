@@ -1,0 +1,15 @@
+Launching lib\main.dart on Chrome in debug mode...
+Waiting for connection from debug service on Chrome...          
+lib/features/auth/screens/login_screen.dart:136:55: Error: The method 'SignUpScreen' isn't defined for the type '_LoginScreenState'.
+ - '_LoginScreenState' is from 'package:memory_assist/features/auth/screens/login_screen.dart' ('lib/features/auth/screens/login_screen.dart').
+Try correcting the name to the name of an existing method, or defining a method named 'SignUpScreen'.
+                    MaterialPageRoute(builder: (_) => SignUpScreen(role: widget.role)),
+                                                      ^^^^^^^^^^^^
+lib/features/guardian/screens/guardian_home_screen.dart:106:17: Error: Expected ']' before this.
+                else
+                ^^^^
+lib/core/models/user_model.dart:60:40: Error: 'Timestamp' isn't a type.
+      createdAt: (map['created_at'] as Timestamp?)?.toDate(),
+                                       ^^^^^^^^^
+Waiting for connection from debug service on Chrome...             20.2s
+Failed to compile application.

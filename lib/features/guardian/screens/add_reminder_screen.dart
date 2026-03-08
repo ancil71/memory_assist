@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -17,7 +18,8 @@ class _AddReminderScreenState extends ConsumerState<AddReminderScreen> {
   final _titleController = TextEditingController();
   DateTime _selectedDate = DateTime.now();
   TimeOfDay _selectedTime = TimeOfDay.now();
-  String _type = 'medication'; // medication, appointment, other
+  String _type = 'medication';
+  String _repeat = 'daily';
 
   Future<void> _pickDateTime() async {
     final date = await showDatePicker(
@@ -42,6 +44,11 @@ class _AddReminderScreenState extends ConsumerState<AddReminderScreen> {
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
+      final creatorId = FirebaseAuth.instance.currentUser?.uid;
+      if (creatorId == null) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Please sign in again.')));
+        return;
+      }
       final dateTime = DateTime(
         _selectedDate.year,
         _selectedDate.month,
@@ -50,19 +57,16 @@ class _AddReminderScreenState extends ConsumerState<AddReminderScreen> {
         _selectedTime.minute,
       );
 
-      // TODO: Get actual creator ID from auth
-      const creatorId = 'guardian_uid_placeholder';
-
       ref.read(reminderServiceProvider).addReminder(
         patientId: widget.patientId,
         creatorId: creatorId,
         title: _titleController.text,
         type: _type,
         time: dateTime,
-        repeat: 'daily', // Defaulting to daily for simplicity
+        repeat: _repeat,
       );
 
-      Navigator.pop(context);
+      if (mounted) Navigator.pop(context);
     }
   }
 
@@ -89,8 +93,19 @@ class _AddReminderScreenState extends ConsumerState<AddReminderScreen> {
                   DropdownMenuItem(value: 'appointment', child: Text('Appointment')),
                   DropdownMenuItem(value: 'other', child: Text('Other')),
                 ],
-                onChanged: (val) => setState(() => _type = val!),
+                onChanged: (val) => setState(() => _type = val ?? 'medication'),
                 decoration: const InputDecoration(labelText: 'Type'),
+              ),
+              const SizedBox(height: 16),
+              DropdownButtonFormField<String>(
+                value: _repeat,
+                items: const [
+                  DropdownMenuItem(value: 'none', child: Text('Once')),
+                  DropdownMenuItem(value: 'daily', child: Text('Daily')),
+                  DropdownMenuItem(value: 'weekly', child: Text('Weekly')),
+                ],
+                onChanged: (val) => setState(() => _repeat = val ?? 'daily'),
+                decoration: const InputDecoration(labelText: 'Repeat'),
               ),
               const SizedBox(height: 16),
               ListTile(

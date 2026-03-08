@@ -22,8 +22,6 @@ class AppTheme {
       onSecondary: Colors.black,
       error: Color(0xFFD32F2F), // High contrast red
       onError: Colors.white,
-      background: Colors.white,
-      onBackground: Colors.black,
       surface: Colors.white,
       onSurface: Colors.black,
     ),

@@ -29,4 +29,22 @@ class SafeLocationsService {
         .orderBy('created_at', descending: true)
         .snapshots();
   }
+  Future<void> updateLocation({
+    required String locationId,
+    required String name,
+    required String address,
+    required double latitude,
+    required double longitude,
+  }) async {
+    await _firestore.collection('safe_locations').doc(locationId).update({
+      'name': name,
+      'address': address,
+      'coordinates': GeoPoint(latitude, longitude),
+      'updated_at': FieldValue.serverTimestamp(),
+    });
+  }
+
+  Future<void> deleteLocation(String locationId) async {
+    await _firestore.collection('safe_locations').doc(locationId).delete();
+  }
 }

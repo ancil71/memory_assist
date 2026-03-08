@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:memory_assist/features/guardian/services/face_service.dart';
+import 'package:memory_assist/features/patient/services/face_recognition_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ManageFacesScreen extends ConsumerStatefulWidget {
   final String? patientId; // Optional: If managed by Guardian for specific patient
@@ -21,21 +22,54 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
   final _nameController = TextEditingController();
   final _relationController = TextEditingController();
 
-  Future<void> _addFace() async {
-    // 1. Pick Image
-    final pickedFile = await _picker.pickImage(
-      source: ImageSource.gallery,
-      imageQuality: 50, // Compress to avoid Firestore 1MB limit
-      maxWidth: 600,
+  Future<void> _showAddSourceChoice() async {
+    if (_isUploading) return;
+    final source = await showModalBottomSheet<ImageSource>(
+      context: context,
+      builder: (context) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ListTile(
+              leading: const Icon(Icons.camera_alt),
+              title: const Text('Take photo with camera'),
+              onTap: () => Navigator.pop(context, ImageSource.camera),
+            ),
+            ListTile(
+              leading: const Icon(Icons.photo_library),
+              title: const Text('Choose from device (gallery)'),
+              onTap: () => Navigator.pop(context, ImageSource.gallery),
+            ),
+          ],
+        ),
+      ),
     );
-    
+    if (source != null) await _addFace(source);
+  }
+
+  Future<void> _addFace(ImageSource source) async {
+    XFile? pickedFile;
+    try {
+      pickedFile = await _picker.pickImage(
+        source: source,
+        imageQuality: 50,
+        maxWidth: 600,
+      );
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to pick image: $e')),
+        );
+      }
+      return;
+    }
+
     if (pickedFile == null) return;
     if (!mounted) return;
 
-    // 2. Dialog for Name & Relationship
     _nameController.clear();
     _relationController.clear();
-    
+
     await showDialog(
       context: context,
       builder: (context) {
@@ -56,13 +90,13 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context), // Cancel
+              onPressed: () => Navigator.pop(context),
               child: const Text('Cancel'),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context); // Close dialog verify inputs later
-                _saveFace(File(pickedFile.path));
+                Navigator.pop(context);
+                _saveFace(pickedFile!);
               },
               child: const Text('Save'),
             ),
@@ -72,20 +106,57 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
     );
   }
 
-  Future<void> _saveFace(File imageFile) async {
+  Future<void> _saveFace(XFile imageFile) async {
     if (_nameController.text.isEmpty) return;
 
     setState(() => _isUploading = true);
 
     try {
-      // Use provided patientId or default for standalone testing
-      final pId = widget.patientId ?? 'patient_uid_mock'; 
+      if (widget.patientId == null) throw Exception('Patient ID is missing');
+      final pId = widget.patientId!; 
 
+      // 1. Detect Face & Generate Embedding
+      final recogService = ref.read(faceRecognitionServiceProvider);
+      // Removed InputImage usage
+      List<double> embedding = [];
+      
+      try {
+         final faces = await recogService.detectFaces(imageFile);
+         if (faces.isNotEmpty) {
+           embedding = await recogService.generateEmbedding(faces.first.alignedFace);
+         }
+      } catch (e) {
+        // If detection crashes, we treat it as no face found
+        print("Face detection error: $e");
+      }
+
+      if (embedding.isEmpty) {
+         // Ask for confirmation
+         final confirm = await showDialog<bool>(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('No Face Detected'),
+              content: const Text('The app could not clearly see a face in this photo.\n\nYou can still save it for the gallery, but the "Who is this?" feature might not recognize this person.\n\nSave anyway?'),
+              actions: [
+                TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
+                ElevatedButton(onPressed: () => Navigator.pop(context, true), child: const Text('Save Anyway')),
+              ],
+            ),
+         );
+
+         if (confirm != true) {
+            setState(() => _isUploading = false);
+            return;
+         }
+      }
+
+      // 2. Save to Firestore
       await ref.read(faceServiceProvider).addFace(
         patientId: pId,
         imageFile: imageFile,
         name: _nameController.text,
         relationship: _relationController.text,
+        embedding: embedding,
       );
 
       if (mounted) {
@@ -93,7 +164,13 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Save Failed: $e')));
+        final msg = e.toString().replaceFirst('Exception: ', '');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Save Failed: $msg'),
+            action: SnackBarAction(label: 'OK', onPressed: () {}),
+          ),
+        );
       }
     } finally {
       if (mounted) setState(() => _isUploading = false);
@@ -102,28 +179,75 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Use provided patientId or default
-    final pId = widget.patientId ?? 'patient_uid_mock'; 
+    if (widget.patientId == null) return const Scaffold(body: Center(child: Text('Error: No Patient Selected')));
+    
+    final pId = widget.patientId!; 
     final faceService = ref.watch(faceServiceProvider);
+    
+    // Check if current user is the patient (View Only Mode)
+    final currentUser = FirebaseAuth.instance.currentUser;
+    final isPatientView = currentUser?.uid == pId;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Manage Faces')),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _isUploading ? null : _addFace,
-        child: _isUploading 
-          ? const CircularProgressIndicator(color: Colors.white) 
-          : const Icon(Icons.add_a_photo),
+      appBar: AppBar(
+        title: Text(isPatientView ? 'Face Gallery' : 'Manage Faces'),
+        actions: [
+          if (!isPatientView)
+            IconButton(
+              icon: const Icon(Icons.add_a_photo),
+              onPressed: _isUploading ? null : _showAddSourceChoice,
+              tooltip: 'Add face (camera or device)',
+            ),
+        ],
+      ),
+      floatingActionButton: isPatientView ? null : FloatingActionButton.extended(
+        onPressed: _isUploading ? null : _showAddSourceChoice,
+        icon: _isUploading ? const SizedBox(width: 24, height: 24, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2)) : const Icon(Icons.add_a_photo),
+        label: const Text('Add face'),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: faceService.getFaces(pId),
         builder: (context, snapshot) {
-          if (snapshot.hasError) return const Center(child: Text('Error loading faces'));
+          if (snapshot.hasError) {
+             final errorStr = snapshot.error.toString();
+             final isBuilding = errorStr.toLowerCase().contains('building');
+             if (isBuilding) {
+               return const Center(
+                 child: Column(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     CircularProgressIndicator(),
+                     SizedBox(height: 16),
+                     Text('Setting up Face Database...'),
+                     Text('Please wait a few minutes.', style: TextStyle(color: Colors.grey)),
+                   ],
+                 ),
+               );
+             }
+             return Center(child: Text('Error loading faces: $errorStr'));
+          }
           if (snapshot.connectionState == ConnectionState.waiting) return const Center(child: CircularProgressIndicator());
 
           final faces = snapshot.data!.docs;
 
           if (faces.isEmpty) {
-            return const Center(child: Text('No faces added yet.'));
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(isPatientView ? 'No photos added yet.' : 'No faces added yet.', style: const TextStyle(fontSize: 18)),
+                  if (!isPatientView) ...[
+                    const SizedBox(height: 24),
+                    ElevatedButton.icon(
+                      onPressed: _isUploading ? null : _showAddSourceChoice,
+                      icon: const Icon(Icons.add_a_photo),
+                      label: const Text('Add face (camera or device)'),
+                      style: ElevatedButton.styleFrom(padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16)),
+                    ),
+                  ],
+                ],
+              ),
+            );
           }
 
           return GridView.builder(
@@ -173,30 +297,31 @@ class _ManageFacesScreenState extends ConsumerState<ManageFacesScreen> {
                         ),
                       ),
                     ),
-                    Positioned(
-                      top: 4,
-                      right: 4,
-                      child: IconButton(
-                        icon: const Icon(Icons.delete, color: Colors.red),
-                        onPressed: () async {
-                           // Confirm delete
-                           final confirm = await showDialog<bool>(
-                             context: context,
-                             builder: (context) => AlertDialog(
-                               title: const Text('Delete Face?'),
-                               actions: [
-                                 TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('No')),
-                                 TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Yes')),
-                               ],
-                             ),
-                           );
-                           
-                           if (confirm == true) {
-                             await faceService.deleteFace(faces[index].id); // No URL needed now
-                           }
-                        },
+                    if (!isPatientView)
+                      Positioned(
+                        top: 4,
+                        right: 4,
+                        child: IconButton(
+                          icon: const Icon(Icons.delete, color: Colors.red),
+                          onPressed: () async {
+                             // Confirm delete
+                             final confirm = await showDialog<bool>(
+                               context: context,
+                               builder: (context) => AlertDialog(
+                                 title: const Text('Delete Face?'),
+                                 actions: [
+                                   TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('No')),
+                                   TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Yes')),
+                                 ],
+                               ),
+                             );
+                             
+                             if (confirm == true) {
+                               await faceService.deleteFace(faces[index].id); // No URL needed now
+                             }
+                          },
+                        ),
                       ),
-                    ),
                   ],
                 ),
               );
